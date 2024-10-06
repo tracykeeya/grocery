@@ -1,0 +1,40 @@
+{% extends 'adminapp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<!-- Add some spacing before the form -->
+<br><br><br><br><br><br>
+
+<!-- Main container for the login form -->
+<div class="body container-fluid container login" style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+    <div class="container container-fluid top text-center">
+        <!-- Login form title -->
+        <h1 class="text-black" style="color: white; font-weight: bold; font-size: 2.5em; letter-spacing: 1px; border-radius: 20px;">Log in.</h1>
+        <p><b>Provide your username and Password</b></p>
+        <br><br>  
+    </div>     
+
+    <!-- Form container -->
+    <div class="container container-fluid" style="display: flex; justify-content: center;">
+        <form id="form" method="POST" class="loginform" action="/login/" style="border-radius: 25px; border: 2px solid #aa0808c8; padding: 30px; width: 400px; background-color: #f9f9f9; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+            <!-- CSRF Token for security -->
+            {% csrf_token %}
+            
+            <!-- Crispy Form rendering -->
+            {{ form|crispy }}  
+            
+            <!-- Submit Button -->
+            <br><br>
+            <input type="submit" name="Submit" class="btn btn-danger btn-block" style="background-color: #17a2b8; color: white; padding: 10px; border-radius: 10px; font-size: 1.2em;" value="Log in">
+            <br>                          
+        </form>      
+    </div>
+</div>
+<br><br>
+
+<!-- Footer -->
+<div class="footer text-center" style="padding: 15px; background-color: #03346E; color: white; border-top: 2px solid #aa0808c8;">
+    © 2024 Happy Hoe Grocery. All rights reserved. By Tracy.
+</div>
+{% endblock %}

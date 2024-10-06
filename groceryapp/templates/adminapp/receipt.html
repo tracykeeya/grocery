@@ -1,0 +1,55 @@
+{% extends 'adminapp/base.html' %}
+{% block content %}
+{% load static %}
+<br /><br>
+<div class="container" style="max-width: 800px; font-family: 'Courier New', Courier, monospace; color: #333;">
+    <h1 class="text-center" style="font-size: 2em; text-transform: uppercase; letter-spacing: 2px; border-bottom: 3px solid #17a2b8; padding-bottom: 10px; color: #17a2b8;">Receipt</h1>
+    <div class="text-center" style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 0; font-weight: 700; background-color: #fff; color: #17a2b8; padding: 10px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Happy Hoe Grocery</h2>
+    </div>
+    {% for sale in sales %}
+    <div style="padding: 20px; border-top: 2px solid #e0e0e0; border-bottom: 2px solid #e0e0e0; margin-bottom: 15px; border-radius: 5px; background-color: #f9f9f9;">
+        <h3 style="margin-bottom: 10px; font-weight: 600; color: #333;">Receipt: Happy Hoe Grocery</h3>
+        
+        <!-- Wrapper for labels and values -->
+        <div style="display: grid; grid-template-columns: max-content auto; grid-gap: 10px;">
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Date:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">{{ sale.stock_date | date:"F j, Y" }}</p>
+
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Customer:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">{{ sale.issued_to | title }}</p>
+
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Item:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">{{ sale.item.item_name }}</p>
+
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Quantity:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">{{ sale.quantity }}</p>
+
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Unit Price:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">UGX {{ sale.unit_price }}</p>
+
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Amount Paid:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">UGX {{ sale.amount_received }}</p>
+
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Total Price:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">UGX {{ sale.get_total }}</p>
+
+            <p style="font-size: 0.9em; margin: 0; color: #555;"><strong>Change:</strong></p>
+            <p style="font-size: 0.9em; margin: 0; color: #555;">UGX {{ sale.get_change }}</p>
+        </div>
+        <br>
+
+        <p style="font-size: 0.9em; color: #555;"><strong>Thank you for shopping with us!</strong></p>
+
+        <a href="{% url 'receipt_detail' sale.id %}" style="display: block; text-align: center; margin-top: 10px;">
+            <input type="submit" value="View Final Receipt" class="btn btn-info" style="font-size: 1em; width: 90%; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        </a>
+    </div>
+    {% endfor %}
+
+    <div style="border-top: 3px solid #17a2b8; margin-top: 20px; padding-top: 10px; text-align: center; background-color: #f1f1f1; border-radius: 5px;">
+        <p style="font-size: 0.9em; color: #444;">Thank you for shopping with us!</p>
+        <p style="font-size: 0.9em; color: #555;">© 2024 Happy Hoe Grocery. All rights reserved.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'adminapp/base.html'%}
+{% load static %}
+{% block content%}
+<br><br>
+<div class="container mt-5">
+  <div class="container col-md-5">
+  <h1 class="text-center" style="background-color: #17a2b8; color: white; border-radius: 30px">VIEW STOCK</h1>
+</div>
+  <br>
+
+  <div class="row justify-content-end">
+    <div class="container col-md-6">
+      <form action="" method="GET" class="d-flex" role="search">
+        <!-- Display product filters using Django form rendering -->
+        {{ product_filters.form }}
+        
+        <!-- Submit button for searching -->
+        <input 
+          type="submit"
+          value="Search"
+          class="btn btn-info ml-2"
+          style="border-radius: 5px; font-weight: 500;"/>
+      </form>
+    </div>
+  </div>
+
+  <!-- Navigation buttons -->
+<button type="submit" class="btn btn-light" style="width: 90px; height: 50px; background: #17a2b8; font-size:1.5rem; font-weight: bolder; color: white;">
+  <a href="/">Back</a>
+</button>
+  
+
+  <br>
+  <table class="table" style="width: 100%; border-collapse: separate; border-spacing: 0 15px; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);">
+    <thead style="background-color: #17a2b8; color: white; border-radius: 10px;">
+      <tr style="border-radius: 10px;">
+        <th scope="col" style="padding: 12px;">Branch Name</th>
+        <th scope="col" style="padding: 12px;">Item Name</th>
+        <th scope="col" style="padding: 12px;">Quantity</th>
+        <th scope="col" style="padding: 12px;">Unit Price (UGX)</th>
+        <th scope="col" style="padding: 12px;">Sale Item</th>
+        <th scope="col" style="padding: 12px;">Delete Item</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+      <tr style="background-color: white; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+        <td style="padding: 12px; border-left: 5px solid #17a2b8;">{{ product.stock_branch_name }}</td>
+        <td style="padding: 12px; border-left: 5px solid #17a2b8;">{{ product.item_name }}</td>
+        <td style="padding: 12px; border-left: 5px solid #17a2b8;">{{ product.total_quantity }}</td>
+        <td style="padding: 12px; border-left: 5px solid #17a2b8;">UGX {{ product.unit_price }}</td>
+        <td style="padding: 12px;"><a href="{% url 'product_detail' product.id %}">
+              <input
+                type="submit"
+                value="Sale Item"
+                class="btn btn-info"
+                type="button" /></a></td>
+        <td style="padding: 12px;">
+          <a href="{% url 'delete_detail' product.id %}" onclick="return confirm('Are you sure you want to delete this item?');">
+            <button class="btn btn-danger" style="width: 80px; font-weight: bolder; font-size: 1.0rem;">Delete</button>
+          </a>
+              </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+<br>
+<div class="footer" style="text-align: center; padding: 15px; font-size: 0.9em;">
+  © 2024 Happy Hoe Grocery. All rights reserved.By Tracy.
+</div>
+{% endblock %}

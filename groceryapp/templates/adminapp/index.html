@@ -1,0 +1,157 @@
+{% block content %}
+{% load static %}
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{% static 'images/different cowpeas.jpg' %}");
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: #03346E;
+            color: white;
+            padding: 10px 0px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .navbar img {
+            height: 80px;
+            
+        }
+
+        .navbar .login-link {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            right: 80px;
+            margin: 0 8%; 
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+      background-color: hsla(0, 2%, 31%, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 80px; /* Adjusted for navbar */
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            color: #0d0303;
+            font-size: 20px;
+            
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+        td{
+            color: white;
+        }
+
+        .me {
+            position: absolute;
+            bottom: 50px; /* Position it above the footer */
+            left: 15px;   /* Keep it a bit away from the edge */
+            color: #333;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .footer {
+            background-color: #03346E;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <img src="{% static 'images/image2.png' %}" alt="Happy Hoe Grocery" height="100px" width="150px">
+    <a href="{% url 'login' %}" class="login-link">Login</a> <!-- Added Login Link -->
+</div>
+
+<div class="container">
+    <h1> <b>Happy Hoe Grocery - Stock</b></h1>
+    <table>
+        <tr>
+            <th>Stock Name</th>
+            <th>Quantity</th>
+        </tr>
+        
+        <tr>
+            <td>Beans</td>
+            <td><b>8000</td>
+        </tr>
+        <tr>
+            <td>Rice</td>
+            <td><b>10000</td>
+        </tr>
+        <tr>
+            <td>Maize</td>
+            <td><b>5000</td>
+        </tr></b>
+        <tr>
+            <td>Soyabeans</td>
+            <td><b>30000</td>
+        </tr>
+        <tr>
+            <td>G. Nuts</td>
+            <td><b>2000</td>
+        </tr>
+        <tr>
+            <td>Cow Peas</td>
+            <td><b>1000</td>
+        </tr>
+    
+    </table>
+    <br><br>
+</div>
+<br>
+<br><br><br>
+
+
+<div class="footer" style="text-align: center; padding: 15px; font-size: 0.9em;">
+    © 2024 Happy Hoe Grocery. All rights reserved.By Tracy.
+  </div>
+
+{% endblock%}

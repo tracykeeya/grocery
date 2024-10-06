@@ -1,0 +1,30 @@
+{% extends 'adminapp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br><br>
+<br><br>
+<div class="container" style="max-width: 800px; margin-top: 20px;">
+  <div class="card shadow-sm rounded">
+    <div class="card-header bg-info text-white text-center">
+      <h1 class="mb-0">
+        {% if credit_sale %} Edit {% else %} Add {% endif %} Credit Sale
+      </h1>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group text-center mt-4">
+          <button type="submit" class="btn btn-info btn-lg">
+            {% if credit_sale %} Save Changes {% else %} Add {% endif %}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+<br><br>
+<div class="footer" style="text-align: center; padding: 15px; font-size: 0.9em;">
+  © 2024 Happy Hoe Grocery. All rights reserved.By Tracy.
+</div>
+{% endblock %}
