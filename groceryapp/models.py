@@ -44,6 +44,7 @@ class Sale(models.Model):
         total = quantity * unit_price
         return int(total)
     
+    
     def get_total(self):
         total = self.quantity * self.item.unit_price
         return int(total)
