@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'grocery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':  'auth_user'
+        'NAME':  'C:\Users\HP\OneDrive\Desktop\KEEYA\grocery\db.sqlite3'
     }
 }
 
