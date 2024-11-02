@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from constants import ROOT_DIR
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'grocery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':  '../db.sqlite3',
+        'NAME':  f'{BASE_DIR}/db.sqlite3',
     }
 }
 
