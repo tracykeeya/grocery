@@ -85,8 +85,16 @@ WSGI_APPLICATION = 'grocery.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'grocery_db',        # Your new database name
+        'USER': 'postgres',              # Your database user
+        'PASSWORD': '123456',      # Your database password
+        'HOST': 'localhost',           # Or the IP address of your PostgreSQL server
+        'PORT': '5432',                # Default PostgreSQL port
+    }
 }
+
 
 
 
