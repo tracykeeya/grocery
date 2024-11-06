@@ -90,7 +90,7 @@ DATABASES = {
         'NAME': 'grocery_db',        # Your new database name
         'USER': 'postgres',              # Your database user
         'PASSWORD': '123456',      # Your database password
-        'HOST': 'db',           # Or the IP address of your PostgreSQL server
+        'HOST': '127.0.0.1',           # Or the IP address of your PostgreSQL server
         'PORT': '5432',                # Default PostgreSQL port
     }
 }
