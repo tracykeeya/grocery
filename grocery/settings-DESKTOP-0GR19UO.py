@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from constants import ROOT_DIR
+import dj_database_url
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +30,8 @@ SECRET_KEY = 'django-insecure-m4%+dgsuqjv2!6kth(ttsk$-%+0@rrr0os3kf32i(p8q(p8u55
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['grocery-three-chi.vercel.app','grocery-cijugncfh-keeya-tracys-projects.vercel.app','127.0.0.1']
+
 
 
 # Application definition
@@ -38,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'groceryapp',
+    'django_filters',
+    'crispy_forms',
+    'crispy_bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -74,12 +83,19 @@ WSGI_APPLICATION = 'grocery.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'grocery_db',        # Your new database name
+        'USER': 'grocery_db_fubn_user',              # Your database user
+        'PASSWORD': '4teTSKVf7NREBsNpTC3Yj9lQbeHBCglO',      # Your database password
+        'HOST': 'postgresql://grocery_db_fubn_user:4teTSKVf7NREBsNpTC3Yj9lQbeHBCglO@dpg-csqek0t2ng1s739pg4e0-a.frankfurt-postgres.render.com/grocery_db_fubn',           # Or the IP address of your PostgreSQL server
+        'PORT': '5432',                # Default PostgreSQL port
     }
 }
+
+
 
 
 # Password validation
@@ -116,9 +132,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Define the URL path for serving static files
+STATIC_URL = '/static/'
+
+# Directory where Django will collect all static files for deployment
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Specify directories that contain static files for development
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Your static files folder
+
+
+#we are preparing django that our templates are going to use bootstrap4#
+CRISPY_TEMPLATE = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+#we are going to redirect the login 
+LOGIN_REDIRECT_URL ='home'
+LOGIN_URL = 'login'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Security settings for cookies in production
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

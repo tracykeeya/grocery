@@ -13,15 +13,24 @@ Class-based views
 Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+
 """
 from django.contrib import admin
-from django.urls import path
+#referencing the include method/function to help us access the urls file in the second app(adminapp)#
+
+from django.urls import include, path
 #we are accessing the views file found in our application folder.
-from groceryapp import views
+#we are accessing the views of the adminapp.#
+#from adminapp import views#
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/',views.index,name = 'index'),
-    path('about/',views.about,name = 'about'),
-    path('access/',views.access,name = 'access'),
+#we are forwarding index request from web browser to be handled by urls file in the second app (adminapp)
+    path('', include('groceryapp.urls')),
+#handling login for the sales agent#    
+    path('login/',auth_views.LoginView.as_view(template_name = 'adminapp/login.html'),name = 'login'),
+    path('logout/',auth_views.LogoutView.as_view(template_name = 'adminapp/logout.html'),name = 'logout'),
+
+
 ]
