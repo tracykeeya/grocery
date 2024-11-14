@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-m4%+dgsuqjv2!6kth(ttsk$-%+0@rrr0os3kf32i(p8q(p8u55
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['grocery-dd5cdlanc-keeya-tracys-projects.vercel.app']
+ALLOWED_HOSTS = ['grocery-three-chi.vercel.app']
 
 
 # Application definition

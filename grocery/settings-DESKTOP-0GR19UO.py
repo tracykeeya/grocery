@@ -31,6 +31,7 @@ SECRET_KEY = 'django-insecure-m4%+dgsuqjv2!6kth(ttsk$-%+0@rrr0os3kf32i(p8q(p8u55
 DEBUG = True
 
 ALLOWED_HOSTS = ['grocery-three-chi.vercel.app','grocery-cijugncfh-keeya-tracys-projects.vercel.app','127.0.0.1']
+'grocery-three-chi.vercel.app'
 
 
 
