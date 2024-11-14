@@ -20,6 +20,7 @@ from django.urls import path
 from groceryapp import views
 
 urlpatterns = [
+    path('https://grocery-three-chi.vercel.app/'),
     path('admin/', admin.site.urls),
     path('index/',views.index,name = 'index'),
     path('about/',views.about,name = 'about'),
